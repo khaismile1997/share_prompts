@@ -13,7 +13,6 @@ const PromptCard = ({ prompt, handleTagClick, handleEdit, handleDelete }) => {
 
   const handleCopy = () => {
     setCopied(prompt.prompt);
-    console.log(prompt.prompt);
     navigator.clipboard.writeText(prompt.prompt);
     setTimeout(() => {
       setCopied("");

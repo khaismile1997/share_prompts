@@ -5,21 +5,20 @@ import { useSearchParams } from "next/navigation";
 
 import Profile from "@components/Profile";
 
-const UserProfile = (params) => {
+const UserProfile = ({ params }) => {
   const searchParams = useSearchParams();
-  const userName = searchParams.get('name');
+  const userName = searchParams.get("name");
 
   const [userPrompts, setUserPrompts] = useState([]);
 
   useEffect(() => {
     const fetchPrompts = async () => {
-      const response = await fetch(`/api/users/${params.id}/prompts`);
+      const response = await fetch(`/api/users/${params?.id}/prompts`);
       const data = await response.json();
 
       setUserPrompts(data);
     };
-
-    if (params.id) fetchPrompts();
+    if (params?.id) fetchPrompts();
   }, [params.id]);
 
   return (
